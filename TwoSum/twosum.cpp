@@ -1,4 +1,5 @@
 #include <algorithm>
+#include <unordered_map>
 #include "twosum.h"
 
 namespace baseline{
@@ -31,5 +32,31 @@ namespace baseline{
             }
         }
         return results;
+    }
+}
+
+namespace optimized{
+    vector<int> twosum::twoSum(vector<int>& nums, int target){
+
+        int i;
+        vector<int> result(2);
+
+        // Create a hash map
+        unordered_map<int, int> nums_map;
+        for (i = 0; i < nums.size(); i++){
+            nums_map.insert(make_pair(nums[i], i));
+        }
+
+        // Traverse over the series and search the complement value by hash table.
+        for (i = 0; i < nums.size(); i++){
+            int complement = target - nums[i];
+            unordered_map<int, int>::iterator search = nums_map.find(complement);
+            if (search != nums_map.end() && search->second != i){
+                result[0] = i;
+                result[1] = search->second;
+                return result;
+            }
+        }
+        return result;
     }
 }

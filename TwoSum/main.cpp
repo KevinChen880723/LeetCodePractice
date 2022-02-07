@@ -5,7 +5,8 @@
 
 using namespace std;
 int main(){
-    baseline::twosum obj;
+    // baseline::twosum obj;
+    optimized::twosum obj;
     int a[] = {3, 2, 4};
     vector<int> numList, results(2);
     int x;
