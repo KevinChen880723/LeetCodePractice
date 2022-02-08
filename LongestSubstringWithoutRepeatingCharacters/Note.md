@@ -18,3 +18,7 @@
 > 下圖為此方法的部分程式碼，可以發現他這邊的Hash map使用不同於[twoSum](https://github.com/KevinChen880723/LeetCodePractice/blob/master/TwoSum/twosum.cpp#L45)中使用的方式，他使用的是一個長度為128的`vector<int>`。Vector的長度之所以是128是因為：字元為8位元，因此只需要大小為128的Vector就可以讓一個字元對應到Hash map中的一個bin。
 
 ![](https://i.imgur.com/fiXzXNS.png)
+
+## Using Sliding Window (Optimized)
+
+前一種方法在遇到重複字元的情況時，會逐漸從最左邊往右檢查是否遇到該字元，過程中不斷地將字元移除，直到遇到該字元為止。但這樣的方式效力還是有差，因為他是一個一個移除字元。如果要改善這個方法可以修改一下Hash map的使用方式，前一種方式是存放各個字元的出現次數，我們可以將裡面存放的內容改成各個字元「出現的位置」。做了這樣的改變之後，之後如果遇到Collision就可以直接知道子字串中相同字元出現的位置，接著把子字串改成該位置後一個位置到最後面（將left改成index+1），如此一來就可以解決子字串中字元重複的問題。
