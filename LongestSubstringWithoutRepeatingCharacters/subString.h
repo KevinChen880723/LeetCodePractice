@@ -17,3 +17,11 @@ namespace slidingWindow{
         int lengthOfLongestSubstring(string s);
     };
 }
+
+namespace optimizedSlidingWindow{
+    class Solution {
+    public:
+        Solution() {}
+        int lengthOfLongestSubstring(string s);
+    };
+}
