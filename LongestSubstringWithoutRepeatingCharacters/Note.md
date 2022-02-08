@@ -15,4 +15,6 @@
 
 這個方法跟我的Baseline Function差不多，只是我是使用兩個字串來紀錄當前最長字串、當前檢視字串，但這個方法只使用了一個物件來紀錄當前檢視字串，另外只使用一個變數來紀錄當前的「最大長度」。除此之外，他這邊不使用字串來紀錄當前檢視字串，而是使用Hash map的方式，透過這樣的方式可以在O(1)的時間檢查字元是否重複（使用我目前的方法需要耗費O(n)的時間來檢查）。由於此方法只需要O(1)的時間就可以完成重複字元的檢測，因此整體的時間複雜度只有O(n)。
 
+> 下圖為此方法的部分程式碼，可以發現他這邊的Hash map使用不同於[twoSum](https://github.com/KevinChen880723/LeetCodePractice/blob/master/TwoSum/twosum.cpp#L45)中使用的方式，他使用的是一個長度為128的`vector<int>`。Vector的長度之所以是128是因為：字元為8位元，因此只需要大小為128的Vector就可以讓一個字元對應到Hash map中的一個bin。
+
 ![](https://i.imgur.com/fiXzXNS.png)
