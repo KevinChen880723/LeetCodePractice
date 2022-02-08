@@ -5,7 +5,7 @@
 using namespace std;
 
 int main(){
-    Solution solution;
+    slidingWindow::Solution solution;
     string input("dvdf");
     int result;
     result = solution.lengthOfLongestSubstring(input);
