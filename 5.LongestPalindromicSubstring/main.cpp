@@ -5,7 +5,7 @@
 // using namespace std;
 
 int main(){
-    baseline::Solution solution;
+    dynamicProgramming::Solution solution;
     std::string result, input("a");
     result = solution.longestPalindrome(input);
     std::cout << result << " is a valid answer" << std::endl;

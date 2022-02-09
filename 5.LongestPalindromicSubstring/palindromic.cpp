@@ -1,5 +1,6 @@
 #include <string>
 #include <vector>
+#include <iostream>
 #include "palindromic.h"
 
 namespace baseline{
@@ -55,5 +56,32 @@ namespace baseline{
         if (currentLongestString == "") currentLongestString.push_back(s[0]);
 
         return currentLongestString;
+    }
+}
+
+namespace dynamicProgramming{
+    string Solution::longestPalindrome(string s){
+        vector< vector<bool> > lookUpTable(s.size(), vector<bool>(s.size(), 0));
+        int i, j, k;
+        string longestString("");
+        for (k = s.size(); k >= 1; k--){
+            for (i = s.size()-k, j = 0; j < k; i++, j++){
+                switch (i-j)
+                {
+                case 0:
+                    lookUpTable[j][i] = true;
+                    break;
+                case 1:
+                    lookUpTable[j][i] = s[i] == s[j];
+                    break;
+                default:
+                    lookUpTable[j][i] = lookUpTable[j+1][i-1] && s[i] == s[j];
+                    break;
+                }
+                if (lookUpTable[j][i] && (i-j+1) > longestString.size())
+                    longestString = s.substr(j, i-j+1); 
+            }
+        }
+        return longestString;
     }
 }

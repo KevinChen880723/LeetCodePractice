@@ -8,3 +8,11 @@ namespace baseline{
         string longestPalindrome(string s);
     };
 }
+
+namespace dynamicProgramming{
+    class Solution {
+    public:
+        Solution() {}
+        string longestPalindrome(string s);
+    };
+}
