@@ -14,4 +14,4 @@
 
 這個方法的概念其實跟我想的方法差不多，但是他使用Dynamic Programming的概念從長度為1到長度為n的子字串慢慢檢查，使用這種方法在檢查"abcba"時，由於更短的子字串"bcb"已經檢查完了，因此只要看"bcb"是不是回文字串、開頭結尾字元是否相同即可確定"abcba"是否為回文字串。
 
-![](https://i.imgur.com/XXGE8mq.png)
+![](https://i.imgur.com/2ADIdpB.png)
