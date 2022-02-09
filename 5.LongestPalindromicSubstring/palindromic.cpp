@@ -61,7 +61,7 @@ namespace baseline{
 
 namespace dynamicProgramming{
     string Solution::longestPalindrome(string s){
-        vector< vector<bool> > lookUpTable(s.size(), vector<bool>(s.size(), 0));
+        bool lookUpTable[s.size()][s.size()];
         int i, j, k;
         string longestString("");
         for (k = s.size(); k >= 1; k--){
