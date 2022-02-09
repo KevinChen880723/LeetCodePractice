@@ -7,3 +7,5 @@
 2. 偶數回文字串：`i`跟`i+1`的字元相同。
 
 函數中使用一個字串`currentLongestString`來紀錄最長子字串，一開始初始化為空字串。在找出所有回文字串的中心點之後，分成奇數、偶數的回文字串去看各個中心點往外看有多少組對稱字元，如果加入對稱的話就把當前字串`currentString`更新。若`currentString`大於`currentLongestString`則將`currentLongestString`取代為`currentString`。
+
+![](https://i.imgur.com/5aQLvYX.png)
