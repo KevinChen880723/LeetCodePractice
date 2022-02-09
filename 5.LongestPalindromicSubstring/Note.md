@@ -9,3 +9,9 @@
 函數中使用一個字串`currentLongestString`來紀錄最長子字串，一開始初始化為空字串。在找出所有回文字串的中心點之後，分成奇數、偶數的回文字串去看各個中心點往外看有多少組對稱字元，如果加入對稱的話就把當前字串`currentString`更新。若`currentString`大於`currentLongestString`則將`currentLongestString`取代為`currentString`。
 
 ![](https://i.imgur.com/5aQLvYX.png)
+
+## Dynamic Programming
+
+這個方法的概念其實跟我想的方法差不多，但是他使用Dynamic Programming的概念從長度為1到長度為n的子字串慢慢檢查，使用這種方法在檢查"abcba"時，由於更短的子字串"bcb"已經檢查完了，因此只要看"bcb"是不是回文字串、開頭結尾字元是否相同即可確定"abcba"是否為回文字串。
+
+![](https://i.imgur.com/zkiPG0m.png)
