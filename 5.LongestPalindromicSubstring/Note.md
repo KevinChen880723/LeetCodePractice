@@ -12,6 +12,8 @@
 
 ## Dynamic Programming
 
-這個方法的概念其實跟我想的方法差不多，但是他使用Dynamic Programming的概念從長度為1到長度為n的子字串慢慢檢查，使用這種方法在檢查"abcba"時，由於更短的子字串"bcb"已經檢查完了，因此只要看"bcb"是不是回文字串、開頭結尾字元是否相同即可確定"abcba"是否為回文字串。
+這個方法的概念其實跟我想的方法差不多，但是他改用Dynamic Programming的方式完成。使用Dynamic Programming時會Bottom-up地從長度為1到長度為n的子字串慢慢檢查，在檢查"abcba"時由於更短的子字串"bcb"已經檢查完了，因此只要看"bcb"是不是回文字串、開頭結尾字元是否相同即可確定"abcba"是否為回文字串。使用這種方法可以避免子字串的重複檢查，他可以做到O(n^2/2)的時間複雜度，但由於看時間複雜度時不看倍數，因此實際上還是O(n^2)。
 
-![](https://i.imgur.com/XXGE8mq.png)
+> 雖然這邊跑起來時間看起來比較快，但我覺得這個速度跟使用的資料結構也有差。在Dynamic Programming中我使用二維陣列，但Baseline Function中使用vector，兩者的速度本身就有差。另外還有一點要注意的是：Leetcode每次跑的結果都不太一樣，我這兩個結果都是取好幾次裡面最快的結果，但其實有時候Dynamic Programming反而還比較慢。
+
+![](https://i.imgur.com/2ADIdpB.png)
