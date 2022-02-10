@@ -1,5 +1,6 @@
 #include "container.h"
 #include <vector>
+#include <algorithm>
 
 using namespace std;
 
@@ -34,5 +35,20 @@ namespace baseline{
             }
         }
         return maximumSize;
+    }
+}
+
+namespace BestSolution{
+
+    int Solution::maxArea(vector<int>& height) {
+        int maxarea = 0, l = 0, r = height.size() - 1;
+        while (l < r) {
+            maxarea = max(maxarea, min(height[l], height[r]) * (r - l));
+            if (height[l] < height[r])
+                l++;
+            else
+                r--;
+        }
+        return maxarea;
     }
 }

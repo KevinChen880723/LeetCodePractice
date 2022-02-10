@@ -8,3 +8,10 @@ namespace baseline{
         int maxArea(vector<int>& height);
     };
 }
+
+namespace BestSolution{
+    class Solution {
+    public:
+        int maxArea(vector<int>& height);
+    };
+}

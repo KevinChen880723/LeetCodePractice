@@ -5,7 +5,7 @@
 using namespace std;
 
 int main(){
-    baseline::Solution solution;
+    BestSolution::Solution solution;
     int height[] = {1,8,6,2,5,4,8,3,7};
     vector<int> input;
     int i;
