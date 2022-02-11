@@ -6,7 +6,7 @@
 
 完成了以上的步驟之後，找出來的結果可楞包含重複的組合，為了解決這個問題，我再使用另一個回圈來把重複的資料拿掉。由於這個部分的時間複雜度也是O(n^2)，因此雖然會影響運算時間，但不會影響時間複雜度。
 
-<img width="613" alt="圖片" src="https://user-images.githubusercontent.com/55487740/153605441-21571f5c-8d67-46e0-a178-dbd6b15502bc.png">
+<img width="777" alt="圖片" src="https://user-images.githubusercontent.com/55487740/153605441-21571f5c-8d67-46e0-a178-dbd6b15502bc.png">
 
 ## Using Two Pointers Version
 
@@ -14,6 +14,6 @@
 
 > `j`之所以是從`i`的右邊一個位置開始是因為為了不要重複選到同一組數組。
 
-<img width="928" alt="圖片" src="https://user-images.githubusercontent.com/55487740/153605576-912a2a1b-b3c8-4660-8fa9-c44274765d3f.png">
+<img width="777" alt="圖片" src="https://user-images.githubusercontent.com/55487740/153605576-912a2a1b-b3c8-4660-8fa9-c44274765d3f.png">
 
 <img width="777" alt="圖片" src="https://user-images.githubusercontent.com/55487740/153605152-c27e7c09-dedd-489d-a73b-b2b67a3d8465.png">
