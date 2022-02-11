@@ -5,7 +5,7 @@
 using namespace std;
 
 int main(){
-    Solution solution;
+    twoPointers::Solution solution;
     int ary[] = {-1,0,1,2,-1,-4}, i;
     vector<int> input;
     for (i = 0; i < 6; i++){
