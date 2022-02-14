@@ -19,8 +19,12 @@ ListNode* Solution::removeNthFromEnd(ListNode* head, int n){
         len++;
     }
 
-    if (slow->next && len != n) slow->next = slow->next->next;
+    // If the node we want to remove is the first node, let pointer `head` point to the second node.
     if (len == n) head = head->next;
+    else{
+        // Else, due to the slower pointer is already in the previous node of the target node, so just by-pass the target node.
+        if (slow->next) slow->next = slow->next->next;
+    }
 
     return head;
 }
