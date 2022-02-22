@@ -6,7 +6,7 @@
 using namespace std;
 
 int main(){
-    bruteforce::Solution solution;
+    hashTable::Solution solution;
     string ary[] = {"eat","tea","tan","ate","nat","bat"};
     vector<string> input;
     vector<vector<string> > result;

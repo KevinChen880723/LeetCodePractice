@@ -1,4 +1,5 @@
 #include "anagrams.h"
+#include <unordered_map>
 
 namespace bruteforce{
     vector<vector<string> > Solution::groupAnagrams(vector<string>& strs){
@@ -58,6 +59,40 @@ namespace bruteforce{
                 temp.push_back(str);
                 result.push_back(temp);
             }
+        }
+        return result;
+    }
+}
+
+namespace hashTable{
+    vector<vector<string> > Solution::groupAnagrams(vector<string>& strs){
+        unordered_map<string, vector<string> > umap;
+        int i, j;
+        vector<vector<string> > result;
+        for (i = 0; i < strs.size(); i++){
+            string str = strs[i];
+            int num_map[26] = {0};
+            for (j = 0; j < str.size(); j++){
+                char c = str[j];
+                num_map[c-'a']++;
+            }
+            string query("");
+            for (j = 0; j < 26; j++){
+                query.push_back('#');
+                char c_convert = char(num_map[j]);
+                query.push_back(c_convert);
+            }
+            unordered_map<string, vector<string> >::iterator iter =  umap.find(query);
+            if (iter == umap.end()) {
+                vector<string> newStr;
+                newStr.push_back(str);
+                umap[query] = newStr;
+            }
+            else umap[query].push_back(str);
+        }
+        
+        for (const std::pair<string, vector<string> > n : umap){
+            result.push_back(n.second);
         }
         return result;
     }
