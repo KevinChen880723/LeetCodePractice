@@ -5,8 +5,8 @@
 using namespace std;
 
 int main(){
-    betterSolution::Solution solution;
-    int ary[] = {5,9,3,2,1,0,2,3,3,1,0,0}, i;
+    baseline::Solution solution;
+    int ary[] = {3, 2, 1, 0, 4}, i;
     vector<int> input;
     for (i = 0; i < sizeof(ary)/sizeof(int); i++)
         input.push_back(ary[i]);
