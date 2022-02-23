@@ -14,6 +14,7 @@
 
 ## Better Solution
 
-
+這是隔天來實驗室才想到的方法，一開始竟然沒辦法馬上想到ＱＱ
+這個方法的時間複雜度為`O(n)`，使用一個for回圈從頭跑到尾，並且使用一個變數`currentAvailableTarget`來紀錄目前可以走到哪個位置，每到一個新的位置都檢查走到這邊之後有沒有辦法走到更遠的地方，如果可以的話就更新`currentAvailableTarget`。過程中如果for回圈在跑的變數`i`超過`currentAvailableTarget`，就代表我們其實是到不了這個位置的，因此直接回傳`false`，假如可以走到底就回傳`true`。
 
 <img width="654" alt="圖片" src="https://user-images.githubusercontent.com/55487740/155263969-f06c34a9-fb60-4f85-b1f0-040c1d3b6f55.png">
