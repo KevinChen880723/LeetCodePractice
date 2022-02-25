@@ -2,7 +2,16 @@
 
 using namespace std;
 
-class Solution {
-public:
-    void setZeroes(vector<vector<int> >& matrix);
-};
+namespace baseline{
+    class Solution {
+    public:
+        void setZeroes(vector<vector<int> >& matrix);
+    };
+}
+
+namespace efficientSpace{
+    class Solution {
+    public:
+        void setZeroes(vector<vector<int> >& matrix);
+    };
+}
