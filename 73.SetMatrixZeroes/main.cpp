@@ -5,16 +5,16 @@
 using namespace std;
 
 int main(){
-    int ary[][4] = {{0,1,2,0},{3,4,5,2},{1,3,1,5}}, y, x;
+    int ary[][3] = {{1, 1, 1},{1, 0, 1},{1, 1, 1}}, y, x;
     vector<vector<int> > matrix;
     for (y = 0; y < 3; y++){
         vector<int> temp;
-        for (x = 0; x < 4; x++){
+        for (x = 0; x < 3; x++){
             temp.push_back(ary[y][x]);
         }
         matrix.push_back(temp);
     }
-    Solution solution;
+    efficientSpace::Solution solution;
     solution.setZeroes(matrix);
     return 0;
 }
