@@ -6,11 +6,15 @@ You must do it **in place**.
 
 **Example 1:**
 
+![圖片](https://user-images.githubusercontent.com/55487740/155667408-8ee848c1-44f7-4e01-b63d-2f6d09c35a54.png)
+
 ```
 Input: matrix = [[1,1,1],[1,0,1],[1,1,1]]
 Output: [[1,0,1],[0,0,0],[1,0,1]]
 ```
 **Example 2:**
+
+![圖片](https://user-images.githubusercontent.com/55487740/155667425-3a188851-a938-4cce-89b7-9820a0878b95.png)
 
 ```
 Input: matrix = [[0,1,2,0],[3,4,5,2],[1,3,1,5]]
