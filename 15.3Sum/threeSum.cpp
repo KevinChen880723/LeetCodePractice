@@ -11,9 +11,9 @@ namespace baseline{
         
         // Initialize the hash map
         // O(n)
-        unordered_map<int, vector<element> > hashMap;
+        unordered_map<int, vector<int> > hashMap;
         for (i = 0; i < nums.size(); i++){
-            hashMap[nums[i]].push_back(element(i, nums[i]));
+            hashMap[nums[i]].push_back(i);
         }
 
         // O(n^2), because the most inner for-loop usually repeat only O(1) due to the property of hash map
@@ -21,20 +21,19 @@ namespace baseline{
             for (j = i+1; j < nums.size(); j++){
                 int twoSum = nums[i] + nums[j];
                 int complement = -twoSum;
-                unordered_map<int, vector<element> >::iterator found = hashMap.find(complement); 
+                unordered_map<int, vector<int> >::iterator found = hashMap.find(complement); 
                 // if `complement` is in the series
                 if (found != hashMap.end()){
-                    vector<element> list = hashMap[complement];
+                    vector<int> list = hashMap[complement];
                     int k;
                     for (k = 0; k < list.size(); k++){
-                        int index = list[k].index;
-                        int value = list[k].value;
-                        // Find the value with different index which is the complement
-                        if (index != i && index > j && value == complement){
+                        int index = list[k];
+                        // Find the compliment with different index
+                        if (index > j){
                             vector<int> triplet(3);
                             triplet[0] = nums[i];
                             triplet[1] = nums[j];
-                            triplet[2] = value;
+                            triplet[2] = complement;
                             triplets.push_back(triplet);
                         }
                     }
