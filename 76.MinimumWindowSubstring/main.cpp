@@ -6,7 +6,7 @@ using namespace std;
 
 int main(){
     Solution solution;
-    string result = solution.minWindow("a", "a");
+    string result = solution.minWindow("bba", "ab");
     cout << result << endl;
     return 0;
 }
