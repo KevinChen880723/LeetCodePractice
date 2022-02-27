@@ -2,7 +2,16 @@
 
 using namespace std;
 
-class Solution {
-public:
-    string minWindow(string s, string t);
-};
+namespace baseline{
+    class Solution {
+    public:
+        string minWindow(string s, string t);
+    };
+}
+
+namespace twoPointers{
+    class Solution {
+    public:
+        string minWindow(string s, string t);
+    };
+}
