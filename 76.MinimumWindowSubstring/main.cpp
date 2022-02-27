@@ -5,12 +5,8 @@
 using namespace std;
 
 int main(){
-    // twoPointers::Solution solution;
-    // string result = solution.minWindow("a", "aa");
-    // cout << result << endl;
-    int i = 1;
-    while (i < 10){
-        cout << ++i << endl;
-    }
+    twoPointers::Solution solution;
+    string result = solution.minWindow("a", "aa");
+    cout << result << endl;
     return 0;
 }
