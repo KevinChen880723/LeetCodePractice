@@ -22,3 +22,39 @@
 由於一個或兩個Digits都有可能組成合法編碼，因此對於一個長度為`n`的字串，他把他拆成將第一個數字、前兩個數字拿掉的情形去做遞迴，這兩個遞迴的結果就是長度為`n`的字串的可能解碼結果。要注意的是如果前兩個數字無法組成合法的編碼，那就只需要去看「將第一個數字拿掉後，長度為`n-1`的遞迴結果」。假如不使用Memorization的話，這個方法的時間複雜度為`O(n^2)`，但是使用了Memorization來避免重複遞迴之後，時間複雜度就可以降為`O(n)`。
 
 ![圖片](https://user-images.githubusercontent.com/55487740/156191368-104d4142-7874-4105-a350-952ba9f039d9.png)
+
+### 程式碼
+
+Time complexity: `O(n)`
+Space complexity: `O(n)`
+
+```cpp
+// Author: Huahua
+// Runtime: 3 ms
+class Solution {
+public:
+    int numDecodings(string s) {
+        if(s.length() == 0) return 0;
+        return ways(s, 0, s.length() - 1);
+    }
+ 
+private:    
+    int ways(const string& s, int l, int r) {        
+        if (m_ways.count(l)) return m_ways[l];
+        if (s[l] == '0') return 0;
+        if (l >= r) return 1; // Single digit or empty.
+        
+        int w = ways(s, l + 1, r);
+        const int prefix = (s[l] - '0') * 10 + (s[l + 1] - '0');
+        
+        if (prefix <= 26)
+             w += ways(s, l + 2, r);
+        
+        m_ways[l] = w;
+        return w;
+    }
+    
+    // Use l as key.
+    unordered_map<int, int> m_ways;
+};
+```
