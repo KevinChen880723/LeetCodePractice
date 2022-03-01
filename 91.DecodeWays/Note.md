@@ -17,3 +17,8 @@
 
 <img width="633" alt="圖片" src="https://user-images.githubusercontent.com/55487740/156187553-832e85ca-3d65-414b-b996-35cfc01480bd.png">
 
+## 別人用Recursion加Memorization的作法
+
+由於一個或兩個Digits都有可能組成合法編碼，因此對於一個長度為`n`的字串，他把他拆成將第一個數字、前兩個數字拿掉的情形去做遞迴，這兩個遞迴的結果就是長度為`n`的字串的可能解碼結果。要注意的是如果前兩個數字無法組成合法的編碼，那就只需要去看「將第一個數字拿掉後，長度為`n-1`的遞迴結果」。假如不使用Memorization的話，這個方法的時間複雜度為`O(n^2)`，但是使用了Memorization來避免重複遞迴之後，時間複雜度就可以降為`O(n)`。
+
+![圖片](https://user-images.githubusercontent.com/55487740/156191368-104d4142-7874-4105-a350-952ba9f039d9.png)
