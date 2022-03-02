@@ -11,13 +11,17 @@ A **valid BST** is defined as follows:
  
 
 **Example 1:**
+
 ![](https://i.imgur.com/9UHr0Ah.png)
+
 ```
 Input: root = [2,1,3]
 Output: true
 ```
 **Example 2:**
+
 ![](https://i.imgur.com/WxvCQMM.png)
+
 ```
 Input: root = [5,1,4,null,null,3,6]
 Output: false
