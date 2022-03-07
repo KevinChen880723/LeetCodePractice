@@ -24,3 +24,29 @@ int maxProfit(vector<int>& prices) {
 ```
 
 ![](https://i.imgur.com/XIU2NTl.png)
+
+## Dynamic Programming
+
+昱豪的作法：不使用兩個變數分別記錄大的、小的數字，而是只使用一個變數`cur`來記錄兩個數字相減的結果。過程中會從頭看到尾，如果原本右邊的數字在被換成新的數字後可以讓結果變大，就更新`cur`；由於他使用的是累加的方式，這種情況下假如`cur`變得比零還小，就代表左邊的數字比右邊的數字還大了，如果我們還繼續固定左邊的話一定會讓結果變小。為了避免這個問題，假如`cur`小於零，就將`cur`歸零，也就是下一次更新再去找一組完全新的數字。
+
+> 他這個做法雖然也是`O(n)`，但因為每一次回圈要執行的程式比我少，因此運算起來會比我快一點點。
+
+```cpp
+class Solution {
+public:
+    int maxProfit(vector<int>& prices) {
+        int res = 0, cur = 0;
+        for(int i = 1; i < prices.size(); ++i){
+            if(cur + prices[i] - prices[i-1] > 0)
+                cur = cur + prices[i] - prices[i-1];
+            else
+                cur = 0;
+            if(cur > res)
+                res = cur;
+        }
+        return res;
+    }
+};
+```
+
+<img width="693" alt="圖片" src="https://user-images.githubusercontent.com/55487740/156964597-10e59661-069a-4022-94d5-a072fd9cb658.png">
