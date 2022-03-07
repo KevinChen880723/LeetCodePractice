@@ -10,7 +10,7 @@ public:
         int l_smallest = l, r_largest = r;
         int bestValue = prices[r] - prices[l];
         while (r > l) {
-            if (prices[l+1]-prices[l_smallest] < prices[r_largest]-prices[r-1]) l++;
+            if (prices[r_largest]-prices[l+1] > prices[r-1]-prices[l_smallest]) l++;
             else r--;
             l_smallest = (prices[l] < prices[l_smallest])? l: l_smallest;
             r_largest = (prices[r] > prices[r_largest])? r: r_largest;
