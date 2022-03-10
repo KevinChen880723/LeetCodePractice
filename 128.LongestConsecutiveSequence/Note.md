@@ -10,6 +10,39 @@
 
 網路上這個人的解法其實跟我差不多，不過他解決了我遇到的問題。他的方法為：我們不要修改新數字加一、減一對應到的長度，而是去修改另一端邊界的長度，範圍中間這些數字對應到的長度就不要修改。如此一來，只要我們在之後遇到已經遇過的數字就直接跳過，這樣就不會受中間還沒調整過長度的數字影響；另外，對於還沒遇過的數字，就一樣檢查加一、減一的數字，假如加一、減一的數字已經存在的話，他們就會是某個範圍的邊界，由於這些邊界對應到的長度已經被修改了，因此就會是正確的數值，之後再更新對面的邊界就好。
 
+```cpp
+int Solution::longestConsecutive(vector<int>& nums){
+    unordered_map<int, int> dict;
+    int *show;
+    int longestLen = 0, i;
+    for (int n : nums) {
+        if (dict.count(n)) continue;
+        int newLen = 1, l_boundary, r_boundary;
+        if (dict.count(n-1) && dict.count(n+1)) {
+            l_boundary = n-dict[n-1];
+            r_boundary = n+dict[n+1];
+            newLen = dict[n-1] + 1 + dict[n+1];
+            dict[n] = dict[l_boundary] = dict[r_boundary] = newLen;
+        }
+        else if (dict.count(n-1) && !dict.count(n+1)) {
+            l_boundary = n-dict[n-1];
+            newLen = dict[n-1] + 1;
+            dict[n] = dict[l_boundary] = newLen;
+        }
+        else if (!dict.count(n-1) && dict.count(n+1)) {
+            r_boundary = n+dict[n+1];
+            newLen = 1 + dict[n+1];
+            dict[n] = dict[r_boundary] = newLen;
+        }
+        else dict[n] = newLen;
+        show = (int*)(dict);
+        longestLen = max(longestLen, newLen);
+    }
+
+    return longestLen;
+}
+```
+
 <img width="500" alt="圖片" src="https://user-images.githubusercontent.com/55487740/157598363-e53a4737-824c-4613-b8cc-c5e9d206d73d.png">
 
 ## LeetCode Solution
