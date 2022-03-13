@@ -4,7 +4,7 @@
 using namespace std;
 
 int main(){
-    Solution solution;
+    DP::Solution solution;
     string ary[] = {"cats","dog","sand","and","cat"};
     vector<string> input;
     int i;
