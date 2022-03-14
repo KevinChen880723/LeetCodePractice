@@ -18,4 +18,31 @@
 
 ## DP Solution
 
-DP就是使用已經解決的小問題來解決大問題，這題其實也可以拆解成這樣的作法。我們每次檢查一個字串是否符合條件都會去檢查（1）子字串是否出現在`wordDict`中、（2）剩下的子字串是否符合條件。這當中比較需要調整的其實只有（2），然而我們在檢查這個條件的時候，常常都會搜尋到重複的，為了避免搜尋到重複的，我們使用DP的方式來記錄目前遇到的子字串是否符合條件。
+DP就是使用已經解決的小問題來解決大問題，這題其實也可以拆解成這樣的作法。從最短的子字串到更大的子字串開始慢慢檢查，檢查長度為`n`的子字串時，可以重複使用長度為`1`到長度為`n-1`的結果，假如這些子字串符合條件就去檢查剩下長度為`n-1`到長度為`1`的子字串，假如剩下的子字串有出現在`wordDict`中，就代表這個長度為`n`的子字串符合條件，因此將LUT標記為`true`，之後就可以重複使用這個結果而不會重複檢查。
+
+整個做法就是使用一個長度為`n-1`的布林陣列來紀錄各種長度的子字串是否符合條件，我們從長度為`1`到長度為`n`的子字串開始檢查。我們在檢查每個長度的子字串時，都去將這個子字串拆成左右兩部分，我們去檢查左半邊是否符合條件，如果符合條件的話再去檢查右半邊是否存在於`wordDict`中，其中檢查左半邊是否符合條件可以使用一開始建立的布林陣列。由於整體程式包含兩個回圈而回圈中的`substr()`的時間複雜度為`O(n)`，因此整體時間複雜度為`O(n^3)`。
+
+```cpp
+class Solution {
+public:
+    bool wordBreak(string s, vector<string>& wordDict) {
+        unordered_set<string> word_set(wordDict.begin(), wordDict.end());
+        vector<bool> dp(s.length() + 1);
+        dp[0] = true;
+
+        for (int i = 1; i <= s.length(); i++) {
+            for (int j = 0; j < i; j++) {
+                string sstr = s.substr(j, i - j);
+                if (dp[j] and
+                    word_set.find(sstr) != word_set.end()) {
+                    dp[i] = true;
+                    break;
+                }
+            }
+        }
+        return dp[s.length()];
+    }
+};
+```
+
+<img width="608" alt="圖片" src="https://user-images.githubusercontent.com/55487740/158116902-c9c7ca5d-6f77-4d2c-81dd-ab81901c1701.png">
