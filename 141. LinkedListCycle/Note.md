@@ -8,4 +8,6 @@
 
 ## Two Pointer Solution
 
+![](https://i.imgur.com/LuCOetF.png)
+
 <img width="725" alt="圖片" src="https://user-images.githubusercontent.com/55487740/158103457-96cc414c-0802-4013-ba87-9d6a90955bab.png">
