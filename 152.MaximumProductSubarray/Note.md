@@ -74,4 +74,4 @@ public:
 };
 ```
 
-![圖片](https://user-images.githubusercontent.com/55487740/158535053-6a7880f8-0405-47a0-afec-d7977a9b03a6.png)
+<img src="https://user-images.githubusercontent.com/55487740/158535330-093eeb49-cf7a-4c4a-8fa5-5fa1fd4e9b39.png" style="width: 100%">
