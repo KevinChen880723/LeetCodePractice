@@ -16,3 +16,66 @@ LeetCode官方使用一種叫做Trie的資料結構，這種資料結構會有�
 
 ![圖片](https://user-images.githubusercontent.com/55487740/201617573-26b22e00-16d9-4066-ad69-fda728574da3.png)
 
+<img width="1379" alt="圖片" src="https://user-images.githubusercontent.com/55487740/201652866-b8b68356-8408-44b8-8bb7-970819624719.png">
+
+```cpp
+class node {
+public:
+    vector<node*> pointers;
+    bool isEnd;
+    node() {
+        isEnd = false;
+        pointers = vector<node*>(26, nullptr);
+    }
+};
+
+class Trie {
+public:
+    Trie() {
+        
+    }
+    
+    void insert(string word) {
+        node *cur = &rootNode;
+        for (int i = 0; i < word.size(); i++) {
+            char newChar = word[i];
+            // If the target char is not exist in the trie
+            if (cur->pointers[newChar-'a'] == nullptr) {
+                cur->pointers[newChar-'a'] = new node();
+            }
+            cur = cur->pointers[newChar-'a'];
+        }
+        // If current is in the last position of word
+        cur->isEnd = true;
+    }
+    
+    bool search(string word) {
+        node *cur = &rootNode;
+        for (int i = 0; i < word.size(); i++) {
+            char newChar = word[i];
+            // If the target char is not exist in the trie
+            if (cur->pointers[newChar-'a'] == nullptr) {
+                return false;
+            }
+            cur = cur->pointers[newChar-'a'];
+        }
+        if(cur->isEnd == true) return true;
+        else return false;
+    }
+    
+    bool startsWith(string prefix) {
+        node *cur = &rootNode;
+        for (int i = 0; i < prefix.size(); i++) {
+            char newChar = prefix[i];
+            // If the target char is not exist in the trie
+            if (cur->pointers[newChar-'a'] == nullptr) {
+                return false;
+            }
+            cur = cur->pointers[newChar-'a'];
+        }
+        return true;
+    }
+private:
+    node rootNode;
+};
+```
