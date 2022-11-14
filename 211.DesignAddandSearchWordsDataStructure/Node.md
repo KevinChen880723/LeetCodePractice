@@ -7,4 +7,6 @@
 
 最後運行的結果如下，其實常常遇到TLE，但多刷幾次還是會過。
 
+他的時間複雜度為`O(26^n)`，這邊的`n`代表有多少個`.`。
+
 ![圖片](https://user-images.githubusercontent.com/55487740/201658634-7cec343d-16cd-42e1-a2dd-b69f1d464eac.png)
