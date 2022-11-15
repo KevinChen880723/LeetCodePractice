@@ -50,3 +50,7 @@ public:
 ```
 
 <img width="693" alt="圖片" src="https://user-images.githubusercontent.com/55487740/156964597-10e59661-069a-4022-94d5-a072fd9cb658.png">
+
+## Skyler Solution
+
+我覺得Skyler的做法最直覺，他就是使用一個`minBuy`來記錄當前最小的買入金額，並使用一個`maxProfit`紀錄當前最大收益。演算法中使用一個迴圈來從頭到尾遍歷每天的金額，若當前減去`minBuy`大於`maxProfit`，則更新`maxProfit`；而如果當前數值比`minBuy`還小的話，就將`minBuy`更新為此數值，此數字可以用於後續的比較。
