@@ -32,3 +32,27 @@ public:
 ```
 
 ![圖片](https://user-images.githubusercontent.com/55487740/202842023-6b821514-e186-47f6-bf73-95b0be3f3d57.png)
+
+## 把空間複雜度降到`O(1)`
+
+其實可以將`result`紀錄為從左跑到右的連乘結果，之後再從右到左，使用一個變數`rightMul`紀錄右到左的結果。由於右到左的時候已經有左到右的資訊、右到左的資訊，因此可得解。
+
+```cpp
+class Solution {
+public:
+    vector<int> productExceptSelf(vector<int>& nums) {
+        vector<int> result(nums.size(), 1);
+        result[0] = nums[0];
+        for (int i = 1; i < nums.size(); i++) {
+            result[i] = result[i-1] * nums[i];
+        }
+        int rightMul = 1;
+        for (int i = nums.size()-1; i > 0; i--) {
+            result[i] = result[i-1] * rightMul;
+            rightMul *= nums[i];
+        }
+        result[0] = rightMul;
+        return result;
+    }
+};
+```
