@@ -43,3 +43,45 @@ private:
     }sortByFirst;
 };
 ```
+
+## Min Heap Solution
+
+[網路上別人的教學](https://www.youtube.com/watch?v=4MEkBvqE_2Q)使用Min Heap的概念來完成，由於Heap不論是存還是取都只要`O(logn)`的時間，因此看完所有會議也只需要`O(nlogn)`的時間，與排序所需要的時間相同，因此時間複雜度為`O(nlogn)`，比我的方法快。
+
+下圖為他方法的概念。他的思路為：先將會議依照開始的時間排序，接著一場一場會議看，依序為其分配會議室，方法中使用Min Heap來記錄各個會議室「當前會議的結束時間」。由於使用Min Heap的方式來記錄當前各場會議的結束時間，因此根節點紀錄的就會是「最早結束的會議時間」。因此我們每次看到一場新的會議的時候，就先去看新的會議的開時間是否比根節點紀錄的「最早結束時間」還晚，如果成立的話，那這場會議就可以使用該場會議使用的會議室；反之代表該時段所有會議室都在使用狀態，因此需要使用額外的會議室（在Heap中加入新的節點）。
+
+在我們遍歷完所有會議後，由於Min Heap存放著個時段中，各個會議的結束時間。而因為過程中會議室如果不夠的話，就要增加一個新的會議室，因此最後Min Heap中節點的數量即代表所需要的最少會議室數量。
+
+<img width="1377" alt="截圖 2022-11-21 下午3 00 09" src="https://user-images.githubusercontent.com/55487740/202985368-37d18293-bf96-4bdb-bc09-5116b8471ab4.png">
+
+```cpp
+class Solution {
+public:
+    /**
+     * @param intervals: an array of meeting time intervals
+     * @return: the minimum number of conference rooms required
+     */
+    int minMeetingRooms(vector<Interval> &intervals) {
+        sort(intervals.begin(), intervals.end(), sortByFirst);
+        priority_queue<int, std::vector<int>, std::greater<int>> minHeap;
+        minHeap.push(intervals[0].end);
+        for (int i = 1; i < intervals.size(); i++) {
+            if (minHeap.top() <= intervals[i].start) {
+                minHeap.pop();
+                minHeap.push(intervals[i].end);
+            }
+            else {
+                minHeap.push(intervals[i].end);
+            }
+        }
+        return minHeap.size();
+    }
+private:
+    struct {
+        bool operator() (Interval a, Interval b) {
+            return a.start < b.start;
+        }
+    }sortByFirst;
+};
+```
+
