@@ -8,7 +8,12 @@
 - 不存在Cycle
 - 所有點都應該連接在一起（只有一個Connected Component)
 
+### 判斷是否有Cycle
+
 我使用跟[Course Schedule](https://github.com/KevinChen880723/LeetCodePractice/tree/master/207.CourseSchedule#%E8%8A%B1%E8%8A%B1%E9%86%AC%E7%9A%84%E8%A7%A3%E6%B3%95)那題類似的方式來看途中有沒有存在Cycle，唯一的不同處是那提的圖唯有向圖但這題是無向圖。為了避免我在Traverse子節點的時候，直接使用相同的Edge走回自己，我需要在呼叫遞迴程式之前，先將同一條鞭`graph[i][n]`設定為`0`，之後再將他調整回`1`。
+
+### 判斷是否所有節點相連
+
 另外，這題還需要判斷所有節點是否都連接在一起。針對這點，我的解法為：
 - 一開始直接先判斷`edges.size()`是否至少跟`n-1`一樣多，如果沒有的話就一定沒辦法滿足此條件，因此直接回傳`false`。
 - 之前[Course Schedule](https://github.com/KevinChen880723/LeetCodePractice/tree/master/207.CourseSchedule#%E8%8A%B1%E8%8A%B1%E9%86%AC%E7%9A%84%E8%A7%A3%E6%B3%95)需要分別從第`0`個節點到第`n-1`個節點開始遍歷，原因先修課的名單有可能有多個Connected Components，如果只從第一個節點開始Traverse的話，假如不是所有課都有關連性的話，那最後有些課就不會被遍歷到。不過這邊我們是要判斷一個圖是否包含多個Connected Components，因此可以只從第一個節點開始遍歷，過程中使用一個`unordered_set<int> connectedComponents`來紀錄這個Component包含的所有節點，當遞迴程式結束時，我們就找完第一個節點所在的那個Connected Component，這時只要再來看是否所有節點都存在這個Component中就好，如果沒有的話就代表不是所有節點都相連，因此回傳`false`。
